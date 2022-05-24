@@ -66,7 +66,7 @@ public class Factura {
             if (item == null) {
                 continue;
             }
-            total *= item.calcularImporte();
+            total += item.calcularImporte();
         }
 
         return total;
@@ -81,13 +81,15 @@ public class Factura {
                 .append(this.cliente.getRfc())
                 .append("\nDescripción: ")
                 .append(this.descripcion)
-                .append("\n")
-                .append("\n#\tNombre\t$\tCant.\tTotal\n");
+                .append("\n");
+
         SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, yyyy");
 
         sb.append("Fecha Emisión: ")
                 .append(df.format(this.fecha))
                 .append("\n");
+
+        sb.append("\n#\tNombre\t$\tCant.\tTotal\n");
 
         for (ItemFactura item:
              this.itemFacturas) {
