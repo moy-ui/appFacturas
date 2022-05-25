@@ -1,12 +1,13 @@
 package com.moy.appfacturas.modelo;
 
 public class Producto {
-    private static int sku;
+    private int sku;
     private String nombre;
     private double precio;
+    private static int ultimoSku;
 
     public Producto(){
-        this.sku++;
+        this.sku = ++ultimoSku;
     }
 
     public int getSku() {
@@ -27,5 +28,12 @@ public class Producto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return sku +
+                "\t" + nombre +
+                "\t" + precio;
     }
 }
