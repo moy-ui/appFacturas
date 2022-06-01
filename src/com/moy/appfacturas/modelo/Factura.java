@@ -62,11 +62,8 @@ public class Factura {
 
     public double calcularTotal() {
         double total = 0;
-        for (ItemFactura item : this.itemFacturas) {
-            if (item == null) {
-                continue;
-            }
-            total += item.calcularImporte();
+        for ( int i = 0; i < indiceItems; i++) {
+            total += this.itemFacturas[i].calcularImporte();
         }
 
         return total;
@@ -91,12 +88,8 @@ public class Factura {
 
         sb.append("\n#\tNombre\t$\tCant.\tTotal\n");
 
-        for (ItemFactura item:
-             this.itemFacturas) {
-            if(item == null){
-                continue;
-            }
-            sb.append(item)
+        for (int i = 0;  i < indiceItems; i++) {
+            sb.append(this.itemFacturas[i].toString())
                     .append("\n");
         }
         sb.append("\nGran Total: ")
